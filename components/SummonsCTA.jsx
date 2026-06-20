@@ -47,7 +47,7 @@ export default function SummonsCTA() {
         className="relative z-10 flex flex-col items-center text-center max-w-sm sm:max-w-lg gap-4"
       >
         <motion.p variants={item} className="font-body italic text-lg sm:text-2xl text-glow-soft">
-          The kingdom awaits its newest members.
+          The kingdom calls upon its guardians once more..
         </motion.p>
         <motion.p variants={item} className="font-display text-xl sm:text-3xl text-glow-gold uppercase tracking-wide">
           Will you answer the call?
