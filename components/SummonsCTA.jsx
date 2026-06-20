@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import ParticleField from "./ParticleField";
 
 // TODO: replace with your real WhatsApp group invite or registration form URL
-const REGISTRATION_LINK = "https://chat.whatsapp.com/your-invite-code-here";
+const REGISTRATION_LINK = "https://chat.whatsapp.com/Hg4D8z4viUd8Ak9iN5Abgm";
 
 const container = {
   hidden: {},
