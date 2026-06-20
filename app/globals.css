@@ -1,0 +1,110 @@
+:root {
+  --hiero-pattern: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22220%22%20height%3D%22220%22%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22%23D4AF37%22%20stroke-width%3D%222%22%3E%0A%3Cpath%20d%3D%22M20%2030%20q14%20-16%2028%200%20M48%2030%20a8%208%200%201%201%200.1%200%22%20%2F%3E%0A%3Ccircle%20cx%3D%2234%22%20cy%3D%2230%22%20r%3D%223%22%20fill%3D%22%23D4AF37%22%20stroke%3D%22none%22%2F%3E%0A%3Cpath%20d%3D%22M100%2020%20v40%20M88%2030%20h24%20M92%2050%20l8%2014%20M108%2050%20l-8%2014%22%20%2F%3E%0A%3Ccircle%20cx%3D%22170%22%20cy%3D%2235%22%20r%3D%2214%22%20%2F%3E%0A%3Cpath%20d%3D%22M156%2035%20h28%20M170%2021%20v28%22%20%2F%3E%0A%3Cpath%20d%3D%22M20%20120%20q20%20-10%2040%200%20q20%2010%2040%200%22%20%2F%3E%0A%3Cpath%20d%3D%22M150%20110%20l16%2018%20l16%20-18%22%20%2F%3E%0A%3Cpath%20d%3D%22M40%20170%20v30%20M40%20170%20q10%20-14%2022%200%20q-12%2014%20-22%200%22%20%2F%3E%0A%3Cpath%20d%3D%22M120%20160%20h40%20M140%20150%20v40%22%20stroke-dasharray%3D%224%204%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #d4af37;
+  --amber: #ffcc66;
+  --bronze: #8b6b2e;
+  --sandstone: #2a1a0a;
+  --void: #0a0a0a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--void);
+  color: var(--amber);
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+  color: #fff7e6;
+}
+
+/* Thin gold scrollbar, desktop only */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #0a0a0a; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#8b6b2e, #d4af37);
+    border-radius: 4px;
+  }
+}
+
+/* Stone wall texture, layered: hieroglyph-like marks + rock grain + vignette */
+.temple-walls {
+  background-color: #0d0905;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,175,55,0.10), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(139,107,46,0.10), transparent 65%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0px, transparent 2px, transparent 26px, rgba(0,0,0,0.25) 28px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.012) 0px, transparent 3px, transparent 90px, rgba(0,0,0,0.2) 92px),
+    linear-gradient(180deg, #15100a 0%, #0a0805 55%, #050402 100%);
+  position: relative;
+}
+
+.temple-walls::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--hiero-pattern);
+  background-size: 220px 220px;
+  opacity: 0.10;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 80% 70% at 50% 45%, transparent 45%, rgba(0,0,0,0.65) 100%);
+}
+
+/* Glowing gold text */
+.text-glow-gold {
+  color: #f3d98a;
+  text-shadow:
+    0 0 6px rgba(212,175,55,0.65),
+    0 0 18px rgba(212,175,55,0.45),
+    0 0 40px rgba(255,204,102,0.25);
+}
+
+.text-glow-soft {
+  color: #ffe4ad;
+  text-shadow: 0 0 10px rgba(255,204,102,0.4);
+}
+
+.title-stone {
+  background: linear-gradient(180deg, #f6e3a1 0%, #d4af37 35%, #8b6b2e 70%, #6e521f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(0,0,0,0.6)) drop-shadow(0 0 26px rgba(212,175,55,0.45));
+}
+
+.gold-rule {
+  background: linear-gradient(90deg, transparent, #d4af37 20%, #ffcc66 50%, #d4af37 80%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
