@@ -48,7 +48,7 @@ function DoorPanel({ side }) {
 
 const SEQ = [
   "THE GODS HAVE NOT FORGOTTEN",
-  "FRESHERS PREPARE TO ANSWER THEIR CALL",
+  "FRESHERS ARE READY TO ANSWER THEIR CALL",
 ];
 
 export default function TempleGates({ onOpened, soundOn }) {
